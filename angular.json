@@ -104,6 +104,39 @@
           }
         }
       }
+    },
+    "lib": {
+      "projectType": "library",
+      "root": "lib",
+      "sourceRoot": "lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "lib/tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["lib/**/*.ts", "lib/**/*.html"],
+            "eslintConfig": "lib/eslint.config.mjs"
+          }
+        }
+      }
     }
   }
 }
