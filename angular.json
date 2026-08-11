@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "schematicCollections": ["angular-eslint"]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -54,9 +55,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -95,7 +94,65 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular/build:unit-test"
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "runnerConfig": true
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
+        }
+      }
+    },
+    "lib": {
+      "projectType": "library",
+      "root": "projects/lib",
+      "sourceRoot": "projects/lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/lib/tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/lib/**/*.ts", "projects/lib/**/*.html"],
+            "eslintConfig": "projects/lib/eslint.config.mjs"
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular-vite:start-storybook",
+          "options": {
+            "configDir": "projects/lib/.storybook",
+            "browserTarget": "lib:build",
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular-vite:build-storybook",
+          "options": {
+            "configDir": "projects/lib/.storybook",
+            "browserTarget": "lib:build",
+            "outputDir": "dist/storybook/lib"
+          }
         }
       }
     }
