@@ -7,7 +7,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "paths": {
-      "lib": ["./dist/lib", "./dist/lib"]
+      "lib": ["./dist/lib"]
     },
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
