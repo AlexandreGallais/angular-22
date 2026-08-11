@@ -1,52 +1,53 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
-
 import eslint from '@eslint/js';
 import { defineConfig } from 'eslint/config';
 import ts from 'typescript-eslint';
 import angular from 'angular-eslint';
 import prettier from 'eslint-plugin-prettier/recommended';
 
-export default defineConfig([{
-  files: ['**/*.ts', '**/*.html'],
-  extends: [prettier],
-  rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        singleAttributePerLine: true,
-      },
-    ],
+export default defineConfig([
+  {
+    files: ['**/*.ts', '**/*.html'],
+    extends: [prettier],
+    rules: {
+      'prettier/prettier': [
+        'error',
+        {
+          singleAttributePerLine: true,
+        },
+      ],
+    },
   },
-}, {
-  files: ['**/*.ts'],
-  extends: [
-    eslint.configs.recommended,
-    ts.configs.recommended,
-    ts.configs.stylistic,
-    angular.configs.tsRecommended,
-  ],
-  processor: angular.processInlineTemplates,
-  rules: {
-    '@angular-eslint/directive-selector': [
-      'error',
-      {
-        type: 'attribute',
-        prefix: 'app',
-        style: 'camelCase',
-      },
+  {
+    files: ['**/*.ts'],
+    extends: [
+      eslint.configs.recommended,
+      ts.configs.recommended,
+      ts.configs.stylistic,
+      angular.configs.tsRecommended,
     ],
-    '@angular-eslint/component-selector': [
-      'error',
-      {
-        type: 'element',
-        prefix: 'app',
-        style: 'kebab-case',
-      },
-    ],
+    processor: angular.processInlineTemplates,
+    rules: {
+      '@angular-eslint/directive-selector': [
+        'error',
+        {
+          type: 'attribute',
+          prefix: 'app',
+          style: 'camelCase',
+        },
+      ],
+      '@angular-eslint/component-selector': [
+        'error',
+        {
+          type: 'element',
+          prefix: 'app',
+          style: 'kebab-case',
+        },
+      ],
+    },
   },
-}, {
-  files: ['**/*.html'],
-  extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
-  rules: {},
-}, ...storybook.configs["flat/recommended"]]);
+  {
+    files: ['**/*.html'],
+    extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
+    rules: {},
+  },
+]);
