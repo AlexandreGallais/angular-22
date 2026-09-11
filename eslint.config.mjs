@@ -43,9 +43,18 @@ export default defineConfig([
           style: 'kebab-case',
         },
       ],
+      'func-style': ['error', 'declaration', { allowTypeAnnotation: true }],
+      'new-cap': 'off',
+      'no-duplicate-imports': 'off',
+      'no-ternary': 'off',
+      'one-var': 'off',
       'sort-keys': 'off',
       'sort-imports': 'off',
-      'new-cap': 'off',
+      '@typescript-eslint/class-methods-use-this': ['off'],
+      '@typescript-eslint/explicit-function-return-type': ['error'],
+      '@typescript-eslint/no-extraneous-class': 'off',
+      '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+      '@typescript-eslint/member-ordering': 'off',
 
       // ────────────────────────────────────────────────────────────────
       // ⚠️ Règles activées par eslint.configs.all / ts.configs.all /
@@ -84,6 +93,11 @@ export default defineConfig([
     files: ['**/*.html'],
     extends: [angular.configs.templateAll],
     rules: {
+      '@angular-eslint/template/i18n': 'off',
+      '@angular-eslint/template/prefer-ngsrc': 'off',
+      '@angular-eslint/template/alt-text': 'off',
+      '@angular-eslint/template/no-call-expression': 'off',
+
       // ⚠️ Règles à seuil de angular.configs.templateAll, à ajuster au projet.
       // '@angular-eslint/template/conditional-complexity': ['error', { maxComplexity: 5 }],
       // '@angular-eslint/template/cyclomatic-complexity': ['error', { maxComplexity: 5 }],
