@@ -43,6 +43,9 @@ export default defineConfig([
           style: 'kebab-case',
         },
       ],
+      'sort-keys': 'off',
+      'sort-imports': 'off',
+      'new-cap': 'off',
 
       // ────────────────────────────────────────────────────────────────
       // ⚠️ Règles activées par eslint.configs.all / ts.configs.all /
