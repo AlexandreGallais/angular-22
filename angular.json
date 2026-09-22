@@ -94,7 +94,7 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "runnerConfig": true
+            "runnerConfig": "vitest-base.config.ts"
           }
         },
         "lint": {
@@ -126,7 +126,7 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "lib/tsconfig.spec.json"
+            "runnerConfig": "vitest-base.config.ts"
           }
         },
         "lint": {

@@ -1,6 +1,7 @@
 {
   "name": "angular-22",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -41,6 +42,7 @@
     "@storybook/addon-themes": "10.6.0",
     "@storybook/angular-vite": "10.6.0",
     "@types/node": "26.6.2",
+    "@vitest/coverage-v8": "4.1.11",
     "angular-eslint": "22.5.0",
     "eslint": "10.11.0",
     "eslint-config-prettier": "10.1.8",
